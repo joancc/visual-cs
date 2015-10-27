@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>D3 Intro</title>
+
+    <!-- FOUNDATION -->
+    <link rel="stylesheet" href="../../bower_components/foundation/css/foundation.min.css">
+    <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../bower_components/foundation/js/foundation.min.js"></script>
+</head>
+
+<body>
+	<div id="userHTML"></div>
+	<style id="userCSS"></style>
+
+	<!-- modal content -->
+    <div id="errorModal" class="reveal-modal" data-reveal aria-labelledby="code error" aria-hidden="true" role="dialog">
+        <div class="row">
+            <div class="large-12 columns">
+	    	    <h2 id="modalTitle">Looks like you have an error</h2>
+				<p class="error"></p>
+            </div>
+        </div>
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+	<script>
+		function receiveMessage(msg){
+			console.log(msg.data);
+			if( msg.data.hasOwnProperty("html") ){
+				console.log("Setting html in iframe");
+            	console.log(msg.data.html);
+				$("#userHTML").html(msg.data.html);
+            }
+            if( msg.data.hasOwnProperty("css") ){
+            	console.log("Setting css in iframe");
+            	console.log(msg.data.css);
+                $("#userCSS").html(msg.data.css);
+            }
+            if( msg.data.hasOwnProperty("js") ){
+            	console.log("Setting js in iframe");
+            	console.log(msg.data.js);
+                try{
+                	eval(msg.data.js);        
+                }catch(e){
+                	console.log("Error when doing eval");
+                	console.log(e);
+                	triggerErrorModal(e);
+                }
+            }
+		}
+
+		function triggerErrorModal(err){
+			$("#errorModal p.error").html(err);
+			$('#errorModal').foundation('reveal', 'open');
+
+			// $('#errorModal').foundation('reveal', 'close');
+		}
+
+		window.addEventListener('message', receiveMessage);
+	</script>
+	<script>
+    	$(document).foundation();
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+* {
+  padding:0;
+  margin:0;
+}
+
+.tabs i {
+  font-size: 2rem;
+}
+
+#leftNav{
+  width: 140px;
+  margin-left: -76px;
+  height: 100%;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 5;
+}
+
+#leftNav a i{
+  display: inline;
+}
+
+#leftNav a span{
+  width: 72px;
+  margin-right: 32px;
+}
+
+#leftNav:hover{
+  margin-left: 0;
+}
+
+#leftNav .icon-bar:hover{
+  margin-left: 0;
+}
+
+main {
+  height:100%;
+  margin-left: 64px;
+  flex-grow: 1;
+  display:flex;
+  flex-direction:column;
+}
+
+body > * {
+  flex-shrink: 0;
+}
+
+.header {
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+}
+    nav, ul.tabs{
+        min-height: 64px;
+        padding: 0;
+        margin: 0;
+        flex-grow: 1;
+    }
+
+section#workspace {
+    flex-grow: 1;
+    display: flex;
+    min-height: 500px;
+}
+
+/*Sidenav*/
+.left-off-canvas-menu {
+  -ms-transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  position: fixed;
+  width: 0;
+  height: 100%; }
+
+.move-right .left-off-canvas-menu {
+  width: 114px; }
+
+.move-right .exit-off-canvas {
+  display: none; }
+
+
+
+.menu {
+  /*background-color: #FF4136;*/
+  border-bottom: 2px solid #FF851B;
+  padding: 1.5rem 3rem;
+  height: auto; }
+  .menu .inline-list {
+    text-align: center; }
+    .menu .inline-list li {
+      float: none;
+      display: inline-block; }
+    .menu .inline-list a {
+      color: #111111;
+      padding-bottom: 0.5rem; }
+      .menu .inline-list a:hover {
+        color: #FF851B;
+        transition: all .3s ease-in-out; }
+    .menu .inline-list .active a {
+      color: #FF851B; }
+  .menu .account {
+    position: absolute;
+    top: 3%;
+    right: 3%; }
+    .menu .account a, .menu .account i {
+      color: #111111; }
+  @media only screen and (min-width: 40.063em) {
+    .menu {
+      height: 5rem; }
+      .menu .inline-list {
+        float: left;
+        margin: 0 0 0 1.5rem; }
+      .menu a:hover {
+        border-bottom: 2px solid #FF851B; } }
+  .menu .account-action {
+    float: right;
+    margin: -.75rem 0 0 0; }
+    .menu .account-action li {
+      margin-left: .2rem; }
+    .menu .account-action a {
+      padding: 0.75rem 1rem; }
+    .menu .account-action a.signup {
+      font-weight: bold;
+      background-color: #3d4146;
+      border-radius: 3px; }
+
+.name {
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin: 0 0 1rem 0;
+  color: #111111; }
+  .name i {
+    color: #FF851B;
+    margin-right: 0.5rem; }
+  @media only screen and (min-width: 40.063em) {
+    .name {
+      float: left; } }
